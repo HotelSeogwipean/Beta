@@ -2,12 +2,17 @@
     ViewData["Title"] = "Home Page";
 }
 <div class="wrapper">
-    <img src="~/images/comingsoon.jpg" />
+    <div>
+        <img src="~/images/comingsoon.jpg" alt="오픈 예정중입니다." class="responsive" align="middle"/>
+    </div>
 </div>
-
-@section EndBody{ 
+@section EndBody{
     <script type="text/javascript">
-        var $width = screen.width;
-        document.body.style.width = $width + "px";
+        window.onload = function () {
+            var $width = screen.width;
+            var _height = screen.height - 30;
+            document.body.style.width = $width + "px";
+            document.querySelector(".wrapper > div").style.height = _height + "px";
+        }
     </script>
 }
