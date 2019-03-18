@@ -30,9 +30,14 @@ namespace Seogwipean_Beta
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
-
+            services.AddMvc().AddSessionStateTempDataProvider();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,8 +57,14 @@ namespace Seogwipean_Beta
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            app.UseAuthentication();
+
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                     name: "areaRoute",
+                     template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
