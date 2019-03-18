@@ -10,6 +10,17 @@
     <meta property="og:description" content="Hotel Seogwipean - Coming Soon ...">
     <meta property="og:image" content="http://hotelseogwipean.com/logo.png">
     <meta property="og:url" content="http://hotelseogwipean.com/">
+    <script src="~/lib/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(document).bind('keydown', function (e) {
+                if (e.keyCode == 123 /* F12 */) {
+                    e.preventDefault();
+                    e.returnValue = false;
+                }
+            });
+        });
+    </script>
     <title>Hotel Seogwipean</title>
     <link href='~/css/site.css' rel='stylesheet' type='text/css'>
     <link href="~/css/custom-alert.css" rel="stylesheet" />
@@ -21,9 +32,6 @@
     <footer class="footer">
         <p class="signature">Copyrightⓒ 2019. <a>Seogwipean Co., Ltd</a>. All rights reserved.</p>
     </footer>
-
-    <script src="~/lib/jquery-3.2.1.min.js"></script>
-
     @RenderSection("EndBody", required: false)
 </body>
 </html>
