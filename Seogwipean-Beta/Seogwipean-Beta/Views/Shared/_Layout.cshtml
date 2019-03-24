@@ -14,7 +14,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $(document).bind('keydown', function (e) {
-                if (e.keyCode == 123 /* F12 */) {
+                if (e.keyCode == 123 ) {
                     e.preventDefault();
                     e.returnValue = false;
                 }
@@ -32,6 +32,13 @@
     <footer class="footer">
         <p class="signature">Copyrightⓒ 2019. <a>Seogwipean Co., Ltd</a>. All rights reserved.</p>
     </footer>
+    <script>
+        window.onload = function () {
+            document.write(window.innerHeight + " " + window.outerHeight);
+        };
+    </script>
     @RenderSection("EndBody", required: false)
+
+
 </body>
 </html>
